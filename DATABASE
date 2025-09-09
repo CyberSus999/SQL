@@ -1,0 +1,6 @@
+Think of it a folder with files(tables)
+  --it is an organized collection of data
+
+Create one
+  CREATE DATABASE dbname;
+  
