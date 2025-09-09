@@ -8,3 +8,10 @@ restart
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'pass';
 GRANT ALL PRIVILEGES ON MYDB * to 'username'@'localhost';
 FLUSH PRIVILEGES;
+
+#so i encountered a problem
+-something about socket...i forgot
+FIX
+ sudo mv /var/lib/mysql/tc.log /var/lib/mysql/tc.l
+sudo systemctl start mariadb
+sudo mysql_secure_installation
