@@ -31,8 +31,7 @@ sudo mkdir -p /run/mysqld
 sudo chown mysql:mysql /run/mysqld
 
 ===FOUR=== old configs
-sudo systemctl restart mariadb
-mariadb -u root -p -e "SELECT VERSION();"
+sudo find /etc -name '*my*.cnf' -delete
 
 ===FIVE== restart afresh
 sudo pacman -Rns mariadb mariadb-clients libmariadbclient
