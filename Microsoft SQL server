@@ -1,0 +1,16 @@
+git clone https://aur.archlinux.org/mssql-server.git
+https://aur.archlinux.org/msodbcsql.git
+https://aur.archlinux.org/mssql-tools.git
+
+BUILD THE SQL SERVER
+cd mssql-server
+makepkg -sirc
+--install the dependencies
+
+MSODBCSQL
+cd ../msodbcsql/
+makepkg -sirc
+
+TOOLS
+ cd ../mssql-tools
+makepkg -sirc
