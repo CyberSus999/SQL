@@ -14,10 +14,35 @@ FLUSH PRIVILEGES;
 
 #so i encountered a problem
 -something about socket...i forgot
+error: Job for mariadb.service failed because the control process exited with error code.
+       See "systemctl status mariadb.service" and "journalctl -xeu mariadb.service" for details.
+
 FIX
- sudo mv /var/lib/mysql/tc.log /var/lib/mysql/tc.l
+===ONE=== Data dir bocked
+sudo rm -rf /var/lib/mysql/*
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+===TWO===User/group issue
+sudo chown -R mysql:mysql /var/lib/mysql
+sudo chmod -R 700 /var/lib/mysql
+
+===THREE===Socket issue
+sudo mkdir -p /run/mysqld
+sudo chown mysql:mysql /run/mysqld
+
+===FOUR=== old configs
+sudo systemctl restart mariadb
+mariadb -u root -p -e "SELECT VERSION();"
+
+===FIVE== restart afresh
+sudo pacman -Rns mariadb mariadb-clients libmariadbclient
+sudo pacman -S mariadb
+
+===SIX== rename the log file
+sudo mv /var/lib/mysql/tc.log /var/lib/mysql/tc.
 sudo systemctl start mariadb
 sudo mysql_secure_installation
+
 ====================================================================================
 DELETING SHIT                                                                      ||
  stop both mariadb and mysql                                                       ||
