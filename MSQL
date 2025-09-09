@@ -46,6 +46,39 @@ sudo mysql_secure_installation
 sudo lsof -i :3306
 sudo kill -9 pid
 
+OK SO I MADE A SCRIPT to fx the compatibility issue
+================================================================================================================================================
+#!/bin/bash
+# Script to fix MySQL Workbench compatibility with MariaDB 12.0.2 on Arch Linux
+
+# Exit on any error
+set -e
+
+# Remove existing MySQL Workbench
+sudo pacman -Rns --noconfirm mysql-workbench || true
+
+# Install the latest MySQL Workbench from AUR (supports newer MariaDB versions)
+yay -S --noconfirm mysql-workbench || {
+    echo "Installing yay if not present..."
+    sudo pacman -S --noconfirm base-devel git
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+    yay -S --noconfirm mysql-workbench
+}
+
+# Verify MariaDB service is running
+sudo systemctl start mariadb || {
+    echo "MariaDB failed to start. Checking logs..."
+    systemctl status mariadb.service
+    journalctl -xeu mariadb.service
+    exit 1
+}
+
+echo "MySQL Workbench updated. Launch and connect to MariaDB (test_user, test_db, password: SecurePass123!)."
+=======================================================================================================================================================================================
+
 ====================================================================================
 DELETING SHIT                                                                      ||
  stop both mariadb and mysql                                                       ||
