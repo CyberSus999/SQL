@@ -15,3 +15,19 @@ FIX
  sudo mv /var/lib/mysql/tc.log /var/lib/mysql/tc.l
 sudo systemctl start mariadb
 sudo mysql_secure_installation
+====================================================================================
+DELETING SHIT                                                                      ||
+ stop both mariadb and mysql                                                       ||
+uninstall all packages                                                             ||
+-sudo pacman -Rns $(pacman -Q | grep -E 'mysql|mariadb' | awk '{print $1}')        ||
+find and delete residuals                                                          ||
+-sudo find / -name '*mysql*' -exec rm -rf {} +                                     ||
+-sudo find / -name '*mariadb*' -exec rm -rf {} +                                   ||
+check for config files                                                             ||
+-sudo rm -rf /etc/mysql /etc/my.cnf /etc/mariadb                                   ||
+clean up user/group                                                                ||
+-sudo userdel -r mysql 2>/dev/null                                                 ||
+-sudo groupdel mysql 2>/dev/null                                                   ||
+verify removal                                                                     ||
+pacman -Q | grep -E 'mysql|mariadb'                                                ||
+====================================================================================
