@@ -3,4 +3,34 @@ Think of it a folder with files(tables)
 
 Create one
   CREATE DATABASE dbname;
-  
+Delete one
+  DROP DATABSE dbname;
+Use one
+  USE dname;
+
+ALTERING
+readonly mode
+  ALTER DATABASE dbname READ ONLY = 1;
+  1 = enabled , 0 = disabled
+
+MAKING TABLES
+eg employee data
+CREATE TABLE employee(
+  id INT,
+  first_name VARCHAR(50),
+  last_name VARCHAR(50),
+  hourly_pay DECIMAL(5, 2),
+  hire_date DATE
+);
+datatypes
+INT
+VARCHAR()
+DECIMAL()
+DATE/DATETIME()
+
+SELECTING FROM TABLES
+SELECT * FROM tablename ; #select everything
+SELECT column_name(s) FROM table_name WHERE condition;
+  eg. SELECT name FROM users WHERE age = 25;
+SELECT * FROM users WHERE age = 25;
+SELECT name, age FROM users WHERE age > 18 AND city = 'Gabs';
