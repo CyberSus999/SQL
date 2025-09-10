@@ -12,7 +12,25 @@ ALTERING
 readonly mode
   ALTER DATABASE dbname READ ONLY = 1;
   1 = enabled , 0 = disabled
-
+egg lets add a phone number to the table below
+  ALTER TABLE tablename
+  ADD phone_number VARCHAR()
+rename a cloumn
+  ALTER TABLE  tablename
+  RENAME COLUMN  columnname TO newname;
+modify a column
+  ALTER TABLE tablename
+  MODIFY COLUMN columnname VARCHAR() or new datatype
+move column
+  ALTER TABLE tablename
+  MODIFY columnname datatype()
+  POSITION;
+  eg
+  FIRST
+  AFTER colunmname
+drop a column
+  ALTER TABLE tablename
+  DROP COLUMN columnname;
 MAKING TABLES
 eg employee data
 CREATE TABLE employee(
@@ -34,3 +52,19 @@ SELECT column_name(s) FROM table_name WHERE condition;
   eg. SELECT name FROM users WHERE age = 25;
 SELECT * FROM users WHERE age = 25;
 SELECT name, age FROM users WHERE age > 18 AND city = 'Gabs';
+
+RENAME TABLE tablename TO newname;
+
+INSERTING A ROW
+INSERT INTO tablename 
+VALUES (follow the order of the columns when adding info);
+  eg the employee table we made up there
+  VALUES(id, firstname, lastname .....)pay attention to the datatypes ;
+  eg VALUES(1, "Bob", "Ate", "25.50", "year-month-day");
+for multiple valuues
+VALUES (),
+       (),
+       ();
+  if you dont wanna add all the details for your row
+  INSERT INTO tablename (columnnames you want to insert)
+  VALUES ();
