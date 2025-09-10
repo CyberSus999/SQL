@@ -67,4 +67,9 @@ VALUES (),
        ();
   if you dont wanna add all the details for your row
   INSERT INTO tablename (columnnames you want to insert)
+
+UPDATING A COLUMN
+UPDATE tablename
+SET columnname = something eg SET name = "bob"
+WHERE position;  eg WHERE id = 3;
   VALUES ();
