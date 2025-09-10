@@ -43,7 +43,7 @@ CREATE TABLE employee(
 datatypes
 INT
 VARCHAR()
-DECIMAL()
+DECIMAL(digits, decimal places)
 DATE/DATETIME()
 
 SELECTING FROM TABLES
@@ -67,9 +67,46 @@ VALUES (),
        ();
   if you dont wanna add all the details for your row
   INSERT INTO tablename (columnnames you want to insert)
+  VALUES();
 
 UPDATING A COLUMN
 UPDATE tablename
 SET columnname = something eg SET name = "bob"
 WHERE position;  eg WHERE id = 3;
-  VALUES ();
+
+DECRIBE tablename; # this command decribes the table
+
+AUTOCOMMIT, COMMIT, ROLLBACK
+SET AUTOCOMMIT = ON/OFF;
+COMMIT; #make a save point
+ROLLBACK; # RESTORE savepoint
+
+DAT and TIME 
+
+CREATE TABLE test(
+    my_date DATE,
+    my_time TIME,
+    my_datime DATETIME
+);
+INSERT INTO test
+VALUES(CURRENT_DATE(), CURRENT_TIME(), NOW()); #return current date
+#CURRENT_DATE +/- 1 .....in/de-crements the date by 1 aka tommorrow
+
+UNIQUE contraint
+-it ensures all values in a column are all different
+ add it during table making
+CREATE TABLE products(
+  product_id INT,
+  product_Name VARCHAR(20) UNIQUE,
+  price DECIMAL(4, 2);
+);
+  add after
+ALTER TABLE tablename
+ADD CONSTRAINT
+UNIQUE(columnname);
+
+NOT NULL constraint
+--any vlaue that should not be null
+same way as before but;
+ALTER TABLE tablename
+MODIFY columnname datatype() NOT NULL;
