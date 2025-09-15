@@ -110,3 +110,12 @@ NOT NULL constraint
 same way as before but;
 ALTER TABLE tablename
 MODIFY columnname datatype() NOT NULL;
+
+CHECK constraint # limits what values can be placed in a column
+-ad it at the bottom of you table
+CONSTRAINT alias CHECK (column name operator value);
+-- alter
+ALTER TABLE table_name
+ADD CONSTRAINT  alias CHECK (coiumnname operator_value)
+
+eg ADD CONSTRAINT ckh_hourlypay CHECK (hourly_pay >=  10.00);
