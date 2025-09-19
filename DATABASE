@@ -119,3 +119,39 @@ ALTER TABLE table_name
 ADD CONSTRAINT  alias CHECK (coiumnname operator_value)
 
 eg ADD CONSTRAINT ckh_hourlypay CHECK (hourly_pay >=  10.00);
+
+Drop the constraint
+ALTER TABLE tablename
+DROP CHECK checkname;
+
+DEFAULT constaraint
+ALTER TABLE tablename
+ALTER columnname SET DEFAULT default_value
+eg 
+  CREATE TABLE tranctions(
+    id INT,
+    amount DECIMAL(5, 2),
+    date DATETIME DEFAULT NOW()
+  );
+  INSERT INTO  transactions(id, amount)
+  VALUES (1, 2.00);
+PRIMARY KEY constraint
+-application to column where its values must be unique and not null. Limit of one primary key per table
+eg. CREATE TABLE tranctions(
+    id INT PRIMARY KEY,
+    amount DECIMAL(5, 2);
+-alter 
+ALTER TABLE tablename
+ADD CONSTRAINT
+PRIMARY KEY(columnname);
+
+AUTO INCREMENT
+CREATE TABLE tranctions(
+    id INT PRIMARY KEY AUTO_INCREMENT, #to a value that is set as a primary key
+    amount DECIMAL(5, 2),
+    date DATETIME DEFAULT NOW());
+
+FOREIGN KEY
+- A primary key from one table that can be found within a different table. Its used to establish a link between two tables
+
+CREATE TABLE transactions(transaction_id INT PRIMARY KEY AUTO_INCREMENT, amount DECIMAL(5, 2), da_te DATETIME DEFAULT NOW(), customer_id INT, FOREIGN KEY(customer_id) REFERENCES customers(customer_id));
